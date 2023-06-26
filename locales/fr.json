@@ -1,0 +1,23 @@
+{
+  "welcome": "Bonjour yey",
+  "edit": "Modifier",
+  "delete": "Supprimer",
+  "active": "Actif",
+  "inactive": "Inactif",
+  "serverId": "Serveur ID",
+  "name": "Nom",
+  "description": "Description",
+  "status": "Statut du serveur",
+  "action": "Action",
+  "list": "Liste des serveurs",
+  "add": "Ajouter un serveur",
+  "titlePop": "Es-tu sûr ?",
+  "yes": "Oui",
+  "no": "Non",
+  "SuccessDelete": "Suppression réussie",
+  "create": "Créer",
+  "cancel": "Annuler",
+  "editServer": "Modifier le serveur",
+  "save": "Sauvegarder",
+  "required": "Ce champ est obligatoire"
+}

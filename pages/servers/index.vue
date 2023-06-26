@@ -78,6 +78,10 @@ const columns = [
   },
 ];
 </script>
+<style lang="less">
+@import "ant-design-vue/lib/style/default.less";
+@import "ant-design-vue/lib/style/components.less";
+</style>
 <style lang="scss" scoped>
 .btn-add {
   margin: 16px 0;

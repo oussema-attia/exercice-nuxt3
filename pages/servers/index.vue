@@ -1,6 +1,8 @@
 <template>
-    <h2>List Servers</h2>
-    <a-button type="primary" @click="navigateTo(localePath('servers-add'))">Add server</a-button>
+  <h2>List Servers</h2>
+  <a-button type="primary" @click="navigateTo(localePath('servers-add'))"
+    >Add server</a-button
+  >
   <a-table :dataSource="servers" :columns="columns">
     <template #bodyCell="{ column, record }">
       <template v-if="column.key === 'isActive'">
@@ -22,13 +24,13 @@
           >
           <a-divider type="vertical" />
           <a-popconfirm
-    title="Are you sure ?"
-    ok-text="Yes"
-    cancel-text="No"
-    @confirm="useDeleteServer(record.id)"
-  >
-    <a >{{ $t("delete") }}</a>
-  </a-popconfirm>
+            title="Are you sure ?"
+            ok-text="Yes"
+            cancel-text="No"
+            @confirm="useDeleteServer(record.id)"
+          >
+            <a>{{ $t("delete") }}</a>
+          </a-popconfirm>
         </span>
       </template>
     </template>

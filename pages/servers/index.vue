@@ -1,8 +1,11 @@
 <template>
   <h2>{{ $t("list") }}</h2>
-  <a-button type="primary" @click="navigateTo(localePath('servers-add'))">{{
-    $t("add")
-  }}</a-button>
+  <a-button
+    type="primary"
+    class="btn-add"
+    @click="navigateTo(localePath('servers-add'))"
+    >{{ $t("add") }}</a-button
+  >
   <a-table :dataSource="servers" :columns="columns">
     <template #bodyCell="{ column, record }">
       <template v-if="column.key === 'isActive'">
@@ -75,3 +78,8 @@ const columns = [
   },
 ];
 </script>
+<style lang="scss" scoped>
+.btn-add {
+  margin: 16px 0;
+}
+</style>

@@ -13,7 +13,7 @@ export default defineNuxtConfig({
     plugins: [
       Components({
         // add option {resolveIcons: true} as parameter for resolving problem with icons
-        resolvers: [AntDesignVueResolver({ resolveIcons: true })],
+        resolvers: [AntDesignVueResolver({ resolveIcons: true, importStyle: false })],
       }),
     ],
   },

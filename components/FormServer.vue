@@ -38,7 +38,3 @@ defineProps({
 defineEmits(['useUpdateData'])
 
 </script>
-<style lang="less">
-@import 'ant-design-vue/lib/style/default.less';
-@import 'ant-design-vue/lib/style/components.less';
-</style>

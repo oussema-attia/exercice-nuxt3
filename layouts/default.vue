@@ -44,6 +44,10 @@ const collapsed: ref<boolean> = ref(false);
 const selectedKeys: ref<string[]> = ref(["1"]);
 const localePath = useLocalePath();
 </script>
+<style lang="less">
+@import 'ant-design-vue/lib/style/default.less';
+@import 'ant-design-vue/lib/style/components.less';
+</style>
 <style>
 #components-layout-demo-side .logo {
   height: 32px;

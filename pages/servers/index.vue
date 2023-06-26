@@ -1,6 +1,11 @@
 <template>
-    <h2>List Servers</h2>
-    <a-button type="primary" @click="navigateTo(localePath('servers-add'))">Add server</a-button>
+  <h2>{{ $t("list") }}</h2>
+  <a-button
+    type="primary"
+    class="btn-add"
+    @click="navigateTo(localePath('servers-add'))"
+    >{{ $t("add") }}</a-button
+  >
   <a-table :dataSource="servers" :columns="columns">
     <template #bodyCell="{ column, record }">
       <template v-if="column.key === 'isActive'">
@@ -22,13 +27,13 @@
           >
           <a-divider type="vertical" />
           <a-popconfirm
-    title="Are you sure ?"
-    ok-text="Yes"
-    cancel-text="No"
-    @confirm="useDeleteServer(record.id)"
-  >
-    <a >{{ $t("delete") }}</a>
-  </a-popconfirm>
+            :title="$t('titlePop')"
+            :ok-text="$t('yes')"
+            :cancel-text="$t('no')"
+            @confirm="useDeleteServer(record.id)"
+          >
+            <a>{{ $t("delete") }}</a>
+          </a-popconfirm>
         </span>
       </template>
     </template>
@@ -38,14 +43,14 @@
 import { useServerStore } from "@/stores/store";
 const store = useServerStore();
 const localePath = useLocalePath();
+const i18n = useI18n();
 const servers = computed(() => {
   return store.servers;
 });
 const useDeleteServer = (id: number) => {
   store.useDeleteServer(id);
-  useOpenNotification("Success delete", "success");
+  useOpenNotification(i18n.t("SuccessDelete"), "success");
 };
-const i18n = useI18n();
 const columns = [
   {
     title: i18n.t("serverId"),
@@ -73,3 +78,12 @@ const columns = [
   },
 ];
 </script>
+<style lang="less">
+@import "ant-design-vue/lib/style/default.less";
+@import "ant-design-vue/lib/style/components.less";
+</style>
+<style lang="scss" scoped>
+.btn-add {
+  margin: 16px 0;
+}
+</style>

@@ -1,5 +1,5 @@
 <template>
-  <h2>Edit server</h2>
+  <h2>{{ $t('editServer') }}</h2>
   <a-form :model="formState" @finish="useUpdateServer">
     <LazyFormServer
       :data="formState"
@@ -7,11 +7,11 @@
       @useUpdateData="(name: string, data:string | boolean) => useUpdateData(name, data)"
     />
     <a-form-item>
-      <a-button type="primary" html-type="submit">Update</a-button>
+      <a-button type="primary" html-type="submit">{{ $t('save') }}</a-button>
       <a-button
         style="margin-left: 10px"
         @click="navigateTo(localePath('servers'))"
-        >Cancel</a-button
+        >{{ $t('cancel') }}</a-button
       >
     </a-form-item>
   </a-form>

@@ -32,7 +32,6 @@ export default defineNuxtConfig({
     dynamicRouteParams: true,
     strategy: "prefix",
     baseUrl: "en",
-    vueI18n: './locales/i18n.config.ts' // if you are using custom path, default 
-
+    vueI18n: './locales/i18n.config.ts'
   },
 });

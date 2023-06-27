@@ -14,7 +14,7 @@ export default () => {
   const useUpdateServer = () => {
     store.useUpdateServer(formState.value, Number(route.params.id));
     // navigateTo(localePath("servers"));
-    useOpenNotification("Success update", "success");
+    useOpenNotification(i18n.t('successUpdate'), "success");
     router.push({ path: "/" + i18n.locale.value + "/" + "servers" });
   };
   const useUpdateData = (name: string, data: string | boolean) => {
@@ -24,7 +24,7 @@ export default () => {
     store.useAddServer(formState.value);
     // navigateTo(localePath("servers"));
     router.push({ path: "/" + i18n.locale.value + "/" + "servers" });
-    useOpenNotification("Success add", "success");
+    useOpenNotification(i18n.t('successAdd'), "success");
   };
 
   return {

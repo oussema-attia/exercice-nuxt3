@@ -49,7 +49,7 @@ const servers = computed(() => {
 });
 const useDeleteServer = (id: number) => {
   store.useDeleteServer(id);
-  useOpenNotification(i18n.t("SuccessDelete"), "success");
+  useOpenNotification(i18n.t("successDelete"), "success");
 };
 const columns = [
   {

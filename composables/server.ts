@@ -4,8 +4,8 @@ import { useServerStore } from "@/stores/store";
 export default () => {
   const store = useServerStore();
   const route = useRoute();
-  const router = useRouter();
   const i18n = useI18n();
+  const localePath = useLocalePath();
   const formState: Ref<Server> = ref({
     name: "",
     isActive: false,
@@ -13,18 +13,16 @@ export default () => {
   });
   const useUpdateServer = () => {
     store.useUpdateServer(formState.value, Number(route.params.id));
-    // navigateTo(localePath("servers"));
     useOpenNotification(i18n.t('successUpdate'), "success");
-    router.push({ path: "/" + i18n.locale.value + "/" + "servers" });
+    navigateTo(localePath("servers"));
   };
   const useUpdateData = (name: string, data: string | boolean) => {
     formState.value[name] = data;
   };
   const useAddServer = () => {
     store.useAddServer(formState.value);
-    // navigateTo(localePath("servers"));
-    router.push({ path: "/" + i18n.locale.value + "/" + "servers" });
     useOpenNotification(i18n.t('successAdd'), "success");
+    navigateTo(localePath("servers"));
   };
 
   return {

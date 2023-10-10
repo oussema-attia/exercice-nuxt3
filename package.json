@@ -1,7 +1,6 @@
 {
   "name": "nuxt-app",
   "private": true,
-  "type": "module",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
@@ -10,18 +9,15 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@nuxt/devtools": "latest",
-    "@nuxtjs/i18n": "^8.0.0-beta.12",
-    "@types/node": "^18",
     "less": "^4.2.0",
     "nuxt": "^3.7.2",
     "sass": "^1.67.0"
   },
   "dependencies": {
     "@ant-design/icons-vue": "^6.0.0",
+    "@nuxtjs/i18n": "^8.0.0-rc.5",
     "@pinia/nuxt": "^0.4.11",
-    "ant-design-vue": "^3.2.20",
-    "pinia": "^2.1.6",
+    "ant-design-vue": "^3.0.0",
     "unplugin-vue-components": "^0.25.2"
   }
 }

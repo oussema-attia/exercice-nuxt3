@@ -4,17 +4,17 @@
       <div class="logo" />
       <a-menu v-model:selectedKeys="selectedKeys" theme="dark" mode="inline">
         <a-menu-item key="1" @click="navigateTo(localePath('/'))">
-          <pie-chart-outlined />
+          <home-outlined />
           <span>Home</span>
         </a-menu-item>
         <a-menu-item key="2" @click="navigateTo(localePath('servers'))">
-          <desktop-outlined />
+          <cloud-server-outlined />
           <span>Servers</span>
         </a-menu-item>
         <a-sub-menu key="sub1">
           <template #title>
             <span>
-              <user-outlined />
+              <flag-outlined />
               <span>Language</span>
             </span>
           </template>

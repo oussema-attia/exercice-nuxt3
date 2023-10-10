@@ -1,6 +1,7 @@
 import { AntDesignVueResolver } from "unplugin-vue-components/resolvers";
 import Components from "unplugin-vue-components/vite";
 export default defineNuxtConfig({
+  devtools: { enabled: false },
   ssr: false,
   css: ["@/assets/scss/main.scss"],
   vite: {

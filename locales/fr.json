@@ -21,5 +21,10 @@
   "cancel": "Annuler",
   "editServer": "Modifier le serveur",
   "save": "Sauvegarder",
-  "required": "Ce champ est obligatoire"
+  "required": "Ce champ est obligatoire",
+  "home": "Accueil",
+  "servers": "Serveurs",
+  "language": "Langue",
+  "english": "Anglais",
+  "french": "Français"
 }

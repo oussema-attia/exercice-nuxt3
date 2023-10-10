@@ -1,33 +1,32 @@
 <template>
+  <a-config-provider :locale="locale === 'en' ? enUS : frFR">
   <a-layout style="min-height: 100vh">
     <a-layout-sider v-model:collapsed="collapsed" collapsible>
       <div class="logo" />
       <a-menu v-model:selectedKeys="selectedKeys" theme="dark" mode="inline">
         <a-menu-item key="1" @click="navigateTo(localePath('/'))">
-          <pie-chart-outlined />
-          <span>Home</span>
+          <home-outlined />
+          <span>{{ $t('home') }}</span>
         </a-menu-item>
         <a-menu-item key="2" @click="navigateTo(localePath('servers'))">
-          <desktop-outlined />
-          <span>Servers</span>
+          <cloud-server-outlined />
+          <span>{{ $t('servers') }}</span>
         </a-menu-item>
         <a-sub-menu key="sub1">
           <template #title>
             <span>
-              <user-outlined />
-              <span>Language</span>
+              <flag-outlined />
+              <span>{{ $t('language') }}</span>
             </span>
           </template>
-          <a-menu-item key="3" @click="navigateTo(switchLocalePath('en')) ">English</a-menu-item>
-          <a-menu-item key="4" @click="navigateTo(switchLocalePath('fr'))">French</a-menu-item>
+          <a-menu-item key="3" @click="navigateTo(switchLocalePath('en'))">{{ $t('english') }}</a-menu-item>
+          <a-menu-item key="4" @click="navigateTo(switchLocalePath('fr'))">{{ $t('french') }}</a-menu-item>
         </a-sub-menu>
       </a-menu>
     </a-layout-sider>
     <a-layout>
       <a-layout-content style="margin: 16px">
-        <div
-          :style="{ padding: '24px', background: '#fff', minHeight: '360px' }"
-        >
+        <div :style="{ padding: '24px', background: '#fff', minHeight: '360px' }">
           <slot />
         </div>
       </a-layout-content>
@@ -36,9 +35,13 @@
       </a-layout-footer>
     </a-layout>
   </a-layout>
+</a-config-provider>
 </template>
 <script lang="ts" setup>
-import { PieChartOutlined, DesktopOutlined } from "@ant-design/icons-vue";
+import enUS from 'ant-design-vue/es/locale/en_US';
+import frFR from 'ant-design-vue/es/locale/fr_FR';
+const i18n = useI18n()
+const locale = i18n.locale
 const switchLocalePath = useSwitchLocalePath();
 const collapsed: ref<boolean> = ref(false);
 const selectedKeys: ref<string[]> = ref(["1"]);
@@ -58,6 +61,7 @@ const localePath = useLocalePath();
 .site-layout .site-layout-background {
   background: #fff;
 }
+
 [data-theme="dark"] .site-layout .site-layout-background {
   background: #141414;
 }

@@ -21,5 +21,10 @@
   "cancel": "Cancel",
   "editServer": "Edit server",
   "save": "Save",
-  "required": "This field is required"
+  "required": "This field is required",
+  "home": "Home",
+  "servers": "Servers",
+  "language": "Language",
+  "english": "English",
+  "french": "French"
 }

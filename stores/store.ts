@@ -1,5 +1,7 @@
 import { Server } from "@/utils/utils";
 
+const config = useRuntimeConfig();
+
 export const useServerStore = defineStore("server", {
   state: () => ({
     idCount: 2,
@@ -9,10 +11,7 @@ export const useServerStore = defineStore("server", {
   actions: {
     async useDeleteServer({ id, onError, onSuccess }: any) {
       const response: any = await fetch(
-        useNuxtApp().$config.public.API +
-          useNuxtApp().$config.public.API_SERVERS +
-          "/" +
-          id,
+        config.public.API + config.public.API_SERVERS + "/" + id,
         {
           method: "DELETE",
         }
@@ -26,8 +25,7 @@ export const useServerStore = defineStore("server", {
     },
     async useAddServer({ data, onError, onSuccess }: any) {
       const response: any = await fetch(
-        useNuxtApp().$config.public.API +
-          useNuxtApp().$config.public.API_SERVERS,
+        config.public.API + config.public.API_SERVERS,
         {
           method: "POST",
           headers: {
@@ -46,10 +44,7 @@ export const useServerStore = defineStore("server", {
     async useGetServer({ id, onError, onSuccess }: any) {
       this.server = {};
       const response: any = await fetch(
-        useNuxtApp().$config.public.API +
-          useNuxtApp().$config.public.API_SERVERS +
-          "/" +
-          id,
+        config.public.API + config.public.API_SERVERS + "/" + id,
         {
           method: "GET",
         }
@@ -64,10 +59,7 @@ export const useServerStore = defineStore("server", {
     },
     async useUpdateServer({ data, id, onError, onSuccess }: any) {
       const response: any = await fetch(
-        useNuxtApp().$config.public.API +
-          useNuxtApp().$config.public.API_SERVERS +
-          "/" +
-          id,
+        config.public.API + config.public.API_SERVERS + "/" + id,
         {
           method: "PUT",
           headers: {
@@ -86,8 +78,7 @@ export const useServerStore = defineStore("server", {
     async useGetServers({ onError, onSuccess }: any) {
       this.servers = [];
       const response: any = await fetch(
-        useNuxtApp().$config.public.API +
-          useNuxtApp().$config.public.API_SERVERS,
+        config.public.API + config.public.API_SERVERS,
         {
           method: "GET",
         }

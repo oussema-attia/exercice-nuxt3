@@ -41,16 +41,18 @@
 </template>
 <script lang="ts" setup>
 import { useServerStore } from "@/stores/store";
+
+const { useGetServers, useDeleteServer } = server();
 const store = useServerStore();
 const localePath = useLocalePath();
 const i18n = useI18n();
 const servers = computed(() => {
   return store.servers;
 });
-const useDeleteServer = (id: number) => {
-  store.useDeleteServer(id);
-  useOpenNotification(i18n.t("successDelete"), "success");
-};
+
+onMounted(()=>{
+  useGetServers()
+})
 const columns = [
   {
     title: i18n.t("serverId"),

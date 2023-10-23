@@ -13,16 +13,47 @@ export default () => {
   });
   const useUpdateServer = () => {
     store.useUpdateServer(formState.value, Number(route.params.id));
-    useOpenNotification(i18n.t('successUpdate'), "success");
+    useOpenNotification(i18n.t("successUpdate"), "success");
     navigateTo(localePath("servers"));
   };
   const useUpdateData = (name: string, data: string | boolean) => {
     formState.value[name] = data;
   };
   const useAddServer = () => {
-    store.useAddServer(formState.value);
-    useOpenNotification(i18n.t('successAdd'), "success");
-    navigateTo(localePath("servers"));
+    store.useAddServer({
+      data: formState.value,
+      onSuccess: () => {
+        useOpenNotification(i18n.t("successAdd"), "success");
+        navigateTo(localePath("servers"));
+      },
+      onError: () => {
+        useOpenNotification(i18n.t("error"), "error");
+      },
+    });
+  };
+
+  const useDeleteServer = (id: string) => {
+    store.useDeleteServer({
+      id: id,
+      onSuccess: () => {
+        useOpenNotification(i18n.t("successDelete"), "success");
+        useGetServers();
+      },
+      onError: () => {
+        useOpenNotification(i18n.t("error"), "error");
+      },
+    });
+  };
+
+  const useGetServers = () => {
+    store.useGetServers({
+      onSuccess: () => {
+        /**/
+      },
+      onError: () => {
+        useOpenNotification(i18n.t("error"), "error");
+      },
+    });
   };
 
   return {
@@ -30,5 +61,7 @@ export default () => {
     useUpdateData,
     useUpdateServer,
     useAddServer,
+    useGetServers,
+    useDeleteServer,
   };
 };

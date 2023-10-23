@@ -27,5 +27,6 @@
   "language": "Langue",
   "english": "Anglais",
   "french": "Français",
-  "footer": "Ant Design ©2018 Créé par Ant UED"
+  "footer": "Ant Design ©2018 Créé par Ant UED",
+  "error": "Erreur du serveur"
 }

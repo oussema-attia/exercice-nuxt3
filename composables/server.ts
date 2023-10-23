@@ -11,10 +11,18 @@ export default () => {
     isActive: false,
     description: "",
   });
-  const useUpdateServer = () => {
-    store.useUpdateServer(formState.value, Number(route.params.id));
-    useOpenNotification(i18n.t("successUpdate"), "success");
-    navigateTo(localePath("servers"));
+  const useUpdateServer = (id: string) => {
+    store.useUpdateServer({
+      id: id,
+      data: formState.value,
+      onSuccess: () => {
+        useOpenNotification(i18n.t("successUpdate"), "success");
+        navigateTo(localePath("servers"));
+      },
+      onError: () => {
+        useOpenNotification(i18n.t("error"), "error");
+      },
+    });
   };
   const useUpdateData = (name: string, data: string | boolean) => {
     formState.value[name] = data;
@@ -56,7 +64,7 @@ export default () => {
     });
   };
 
-  const useGetServer = (id:string) => {
+  const useGetServer = (id: string) => {
     store.useGetServer({
       id: id,
       onSuccess: (data: Server) => {

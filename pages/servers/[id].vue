@@ -1,6 +1,6 @@
 <template>
   <h2>{{ $t('editServer') }}</h2>
-  <a-form :model="formState" @finish="useUpdateServer">
+  <a-form :model="formState" @finish="useUpdateServer($route.params.id)">
     <LazyFormServer
       :data="formState"
       :key="formState.id"

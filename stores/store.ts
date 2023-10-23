@@ -62,10 +62,26 @@ export const useServerStore = defineStore("server", {
         return onError(res);
       }
     },
-    useUpdateServer(data: Server, id: number) {
-      const index = this.servers.findIndex((a: Server) => a.id == id);
-      this.servers[index] = data;
-      this.servers[index].id = id;
+    async useUpdateServer({ data, id, onError, onSuccess }: any) {
+      const response: any = await fetch(
+        useNuxtApp().$config.public.API +
+          useNuxtApp().$config.public.API_SERVERS +
+          "/" +
+          id,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
+      const res = await response.json();
+      if (response.status == 200) {
+        return onSuccess(res);
+      } else {
+        return onError(res);
+      }
     },
     async useGetServers({ onError, onSuccess }: any) {
       this.servers = [];

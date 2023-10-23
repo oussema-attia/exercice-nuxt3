@@ -56,6 +56,18 @@ export default () => {
     });
   };
 
+  const useGetServer = (id:string) => {
+    store.useGetServer({
+      id: id,
+      onSuccess: (data: Server) => {
+        formState.value = data;
+      },
+      onError: () => {
+        useOpenNotification(i18n.t("error"), "error");
+      },
+    });
+  };
+
   return {
     formState,
     useUpdateData,
@@ -63,5 +75,6 @@ export default () => {
     useAddServer,
     useGetServers,
     useDeleteServer,
+    useGetServer,
   };
 };

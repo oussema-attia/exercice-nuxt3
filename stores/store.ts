@@ -3,7 +3,7 @@ import { Server } from "@/utils/utils";
 export const useServerStore = defineStore("server", {
   state: () => ({
     idCount: 2,
-    server: {} as Server | undefined,
+    server: {} as Server,
     servers: [] as Server[],
   }),
   actions: {
@@ -43,9 +43,24 @@ export const useServerStore = defineStore("server", {
         return onError(res);
       }
     },
-    useGetServer(id: number) {
+    async useGetServer({ id, onError, onSuccess }: any) {
       this.server = {};
-      this.server = this.servers.find((a: Server) => a.id == id);
+      const response: any = await fetch(
+        useNuxtApp().$config.public.API +
+          useNuxtApp().$config.public.API_SERVERS +
+          "/" +
+          id,
+        {
+          method: "GET",
+        }
+      );
+      const res = await response.json();
+      if (response.status == 200) {
+        this.server = res;
+        return onSuccess(res);
+      } else {
+        return onError(res);
+      }
     },
     useUpdateServer(data: Server, id: number) {
       const index = this.servers.findIndex((a: Server) => a.id == id);

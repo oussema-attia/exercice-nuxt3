@@ -18,6 +18,12 @@ export default defineNuxtConfig({
       }),
     ],
   },
+  runtimeConfig: {
+    public: {
+      API: process.env.API,
+      API_SERVERS: '/servers',
+    },
+  },
   modules: ["@pinia/nuxt", "@nuxtjs/i18n"],
   pinia: {
     autoImports: [

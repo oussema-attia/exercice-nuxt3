@@ -3,47 +3,102 @@ import { Server } from "@/utils/utils";
 export const useServerStore = defineStore("server", {
   state: () => ({
     idCount: 2,
-    server: {} as Server | undefined,
-    servers: [
-      {
-        id: 0,
-        name: "Server A",
-        description: "Server of domain A",
-        isActive: true,
-      },
-      {
-        id: 1,
-        name: "Server B",
-        description: "Server of domain B",
-        isActive: false,
-      },
-      {
-        id: 2,
-        name: "Server C",
-        description: "Server of domain C",
-        isActive: true,
-      },
-    ] as Server[],
+    server: {} as Server,
+    servers: [] as Server[],
   }),
   actions: {
-    useDeleteServer(id: number) {
-      const index = this.servers.findIndex((a: any) => a.id == id);
-      this.servers.splice(index, 1);
+    async useDeleteServer({ id, onError, onSuccess }: any) {
+      const response: any = await fetch(
+        useNuxtApp().$config.public.API +
+          useNuxtApp().$config.public.API_SERVERS +
+          "/" +
+          id,
+        {
+          method: "DELETE",
+        }
+      );
+      const res = await response.json();
+      if (response.status == 200) {
+        return onSuccess(res);
+      } else {
+        return onError(res);
+      }
     },
-    useAddServer(data: Server) {
-      let newServer = data;
-      this.idCount++;
-      newServer.id = this.idCount++;
-      this.servers.push(data);
+    async useAddServer({ data, onError, onSuccess }: any) {
+      const response: any = await fetch(
+        useNuxtApp().$config.public.API +
+          useNuxtApp().$config.public.API_SERVERS,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
+      const res = await response.json();
+      if (response.status == 201) {
+        return onSuccess(res);
+      } else {
+        return onError(res);
+      }
     },
-    useGetServer(id: number) {
+    async useGetServer({ id, onError, onSuccess }: any) {
       this.server = {};
-      this.server = this.servers.find((a: Server) => a.id == id);
+      const response: any = await fetch(
+        useNuxtApp().$config.public.API +
+          useNuxtApp().$config.public.API_SERVERS +
+          "/" +
+          id,
+        {
+          method: "GET",
+        }
+      );
+      const res = await response.json();
+      if (response.status == 200) {
+        this.server = res;
+        return onSuccess(res);
+      } else {
+        return onError(res);
+      }
     },
-    useUpdateServer(data: Server, id: number) {
-      const index = this.servers.findIndex((a: Server) => a.id == id);
-      this.servers[index] = data;
-      this.servers[index].id = id;
+    async useUpdateServer({ data, id, onError, onSuccess }: any) {
+      const response: any = await fetch(
+        useNuxtApp().$config.public.API +
+          useNuxtApp().$config.public.API_SERVERS +
+          "/" +
+          id,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
+      const res = await response.json();
+      if (response.status == 200) {
+        return onSuccess(res);
+      } else {
+        return onError(res);
+      }
+    },
+    async useGetServers({ onError, onSuccess }: any) {
+      this.servers = [];
+      const response: any = await fetch(
+        useNuxtApp().$config.public.API +
+          useNuxtApp().$config.public.API_SERVERS,
+        {
+          method: "GET",
+        }
+      );
+      const res = await response.json();
+      if (response.status == 200) {
+        this.servers = res;
+        return onSuccess(res);
+      } else {
+        return onError(res);
+      }
     },
   },
 });

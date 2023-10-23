@@ -1,6 +1,6 @@
 <template>
   <h2>{{ $t('editServer') }}</h2>
-  <a-form :model="formState" @finish="useUpdateServer">
+  <a-form :model="formState" @finish="useUpdateServer($route.params.id)">
     <LazyFormServer
       :data="formState"
       :key="formState.id"
@@ -21,9 +21,8 @@ import { useServerStore } from "@/stores/store";
 const store = useServerStore();
 const route = useRoute();
 const localePath = useLocalePath();
-const { useUpdateData, formState, useUpdateServer } = server();
+const { useUpdateData, formState, useUpdateServer, useGetServer } = server();
 onMounted(() => {
-  store.useGetServer(Number(route.params.id));
-  formState.value = store.server;
+  useGetServer(route.params.id);
 });
 </script>

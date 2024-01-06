@@ -1,6 +1,6 @@
 <template>
   <h2>{{ $t('editServer') }}</h2>
-  <a-form :model="formState" @finish="useUpdateServer($route.params.id)">
+  <a-form :model="formState" @finish="useUpdateServer(route.params.id)">
     <LazyFormServer
       :data="formState"
       :key="formState.id"
@@ -17,8 +17,6 @@
   </a-form>
 </template>
 <script lang="ts" setup>
-import { useServerStore } from "@/stores/store";
-const store = useServerStore();
 const route = useRoute();
 const localePath = useLocalePath();
 const { useUpdateData, formState, useUpdateServer, useGetServer } = server();

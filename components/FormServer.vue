@@ -5,7 +5,7 @@
     :rules="[{ required: true, message: $t('required') }]"
   >
     <a-input
-    :default-value="data.name"
+      :default-value="data.name"
       @change="(a:any)=>$emit('useUpdateData','name',a.target.value)"
     />
   </a-form-item>
@@ -27,14 +27,11 @@
   </a-form-item>
 </template>
 <script lang="ts" setup>
-import { Server } from "@/utils/utils";
-
 defineProps({
   data: {
-    type: [Object as ()=> Server, null],
-    default: null
-    },
+    type: [Object as () => Server, null],
+    default: null,
+  },
 });
-defineEmits(['useUpdateData'])
-
+defineEmits(["useUpdateData"]);
 </script>

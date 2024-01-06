@@ -48,10 +48,13 @@ import enUS from "ant-design-vue/es/locale/en_US";
 import frFR from "ant-design-vue/es/locale/fr_FR";
 const i18n = useI18n();
 const locale = i18n.locale;
+const route = useRoute();
 const switchLocalePath = useSwitchLocalePath();
-const collapsed: ref<boolean> = ref(false);
-const selectedKeys: ref<string[]> = ref(["1"]);
 const localePath = useLocalePath();
+const collapsed: Ref<boolean> = ref(false);
+const selectedKeys: Ref<string[]> = ref(
+  route.fullPath === localePath("servers") ? ["2"] : ["1"]
+);
 </script>
 <style lang="less">
 @import "ant-design-vue/lib/style/default.less";

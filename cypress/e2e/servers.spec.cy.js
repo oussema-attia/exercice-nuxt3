@@ -1,5 +1,5 @@
-describe('/Servers', () => {
-  it('passes', () => {
-    cy.visit('https://preeminent-cascaron-963d93.netlify.app')
-  })
-})
+describe("Test /Servers CRUD", () => {
+  it("Navigate to " + Cypress.env("FRONT_URL"), () => {
+    cy.visit(Cypress.env("FRONT_URL"));
+  });
+});

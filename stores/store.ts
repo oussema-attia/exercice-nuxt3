@@ -1,5 +1,3 @@
-import { Server } from "@/utils/utils";
-
 const config = useRuntimeConfig();
 
 export const useServerStore = defineStore("server", {

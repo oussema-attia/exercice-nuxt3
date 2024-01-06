@@ -50,9 +50,9 @@ const servers = computed(() => {
   return store.servers;
 });
 
-onMounted(()=>{
-  useGetServers()
-})
+onMounted(() => {
+  useGetServers();
+});
 const columns = [
   {
     title: i18n.t("serverId"),

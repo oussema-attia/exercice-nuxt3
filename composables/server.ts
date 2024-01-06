@@ -1,9 +1,7 @@
-import { Server } from "@/utils/utils";
 import { useServerStore } from "@/stores/store";
 
 export default () => {
   const store = useServerStore();
-  const route = useRoute();
   const i18n = useI18n();
   const localePath = useLocalePath();
   const formState: Ref<Server> = ref({

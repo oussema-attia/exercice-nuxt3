@@ -7,7 +7,7 @@ export interface Server {
   description: string;
 }
 
-export const useOpenNotification = (name: any, type: any) => {
+export const useOpenNotification = (name: string, type: string) => {
   notification[type]({
     message: name,
     description: "",

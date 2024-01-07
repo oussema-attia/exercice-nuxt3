@@ -39,6 +39,7 @@ describe("Test " + Cypress.env("FRONT_URL"), () => {
         cy.wait(1000);
         cy.get(".ant-btn").click();
       });
+
       it("Path is /en/servers/add", () => {
         cy.location().should((location) => {
           expect(location.href).to.eq(
@@ -46,9 +47,11 @@ describe("Test " + Cypress.env("FRONT_URL"), () => {
           );
         });
       });
+
       it("Should have 3 form items", () => {
         cy.get(".ant-form-item").should("have.length", 3);
       });
+
       it("Add server", () => {
         cy.get("#form_item_name").type("name");
         cy.get('button[aria-checked="false"]').click();
@@ -65,9 +68,11 @@ describe("Test " + Cypress.env("FRONT_URL"), () => {
         cy.wait(1000);
         cy.get(".ant-table-row").last().find("a").contains("Edit").click();
       });
+
       it("Should have 3 form items", () => {
         cy.get(".ant-form-item").should("have.length", 3);
       });
+
       it("Update server", () => {
         cy.get("#form_item_name").type("name 2");
         cy.get('button[aria-checked="true"]').click();

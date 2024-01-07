@@ -60,6 +60,25 @@ describe("Test " + Cypress.env("FRONT_URL"), () => {
       });
     });
 
+    describe("Edit " + Cypress.env("FRONT_URL") + "/en/Servers/id", () => {
+      beforeEach(() => {
+        cy.wait(1000);
+        cy.get(".ant-table-row").last().find("a").contains("Edit").click();
+      });
+      it("Should have 3 form items", () => {
+        cy.get(".ant-form-item").should("have.length", 3);
+      });
+      it("Update server", () => {
+        cy.get("#form_item_name").type("name 2");
+        cy.get('button[aria-checked="true"]').click();
+        cy.get("#form_item_description").type("description 2");
+        cy.get('button[type="submit"]').click();
+        cy.location().should((location) => {
+          expect(location.href).to.eq(Cypress.env("FRONT_URL") + "/en/servers");
+        });
+      });
+    });
+
     describe("Delete " + Cypress.env("FRONT_URL") + "/en/Servers", () => {
       it("Delete server", () => {
         cy.get(".ant-table-row").last().find("a").contains("Delete").click();

@@ -57,6 +57,7 @@ describe("Test " + Cypress.env("FRONT_URL"), () => {
         cy.get('button[aria-checked="false"]').click();
         cy.get("#form_item_description").type("description");
         cy.get('button[type="submit"]').click();
+        cy.wait(3000);
         cy.location().should((location) => {
           expect(location.href).to.eq(Cypress.env("FRONT_URL") + "/en/servers");
         });
@@ -65,7 +66,7 @@ describe("Test " + Cypress.env("FRONT_URL"), () => {
 
     describe("Edit " + Cypress.env("FRONT_URL") + "/en/Servers/id", () => {
       beforeEach(() => {
-        cy.wait(1000);
+        cy.wait(3000);
         cy.get(".ant-table-row").last().find("a").contains("Edit").click();
       });
 

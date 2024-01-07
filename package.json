@@ -7,7 +7,7 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "test": "cypress open"
+    "cypress:open": "cypress open"
   },
   "devDependencies": {
     "less": "^4.2.0",
